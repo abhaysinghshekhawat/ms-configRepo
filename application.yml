@@ -8,8 +8,6 @@ eureka:
     prefer-ip-address: true
 
 spring:
-  application:
-    name: default-config
   kafka:
     admin:
       client-id: my-admin-client
