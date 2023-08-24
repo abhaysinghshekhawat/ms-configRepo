@@ -10,3 +10,30 @@ eureka:
 spring:
   application:
     name: default-config
+  kafka:
+    admin:
+      client-id: my-admin-client
+    bootstrap-servers: 172.18.195.105:9092
+    consumer:
+      auto-offset-reset: latest
+      bootstrap-servers: 172.18.195.105:9092
+      group-id: myGroup
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          deserializer:
+            value:
+              delegate:
+                class: org.springframework.kafka.support.serializer.JsonDeserializer
+          json:
+            trusted:
+              packages: '*'
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+    producer:
+      bootstrap-servers: 172.18.195.105:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    topic:
+      name: new-topic
+
+  
